@@ -1,3 +1,3 @@
-const Session = () => <div>Session</div>;
+const SessionPage = () => <div>Session</div>;
 
-export default Session;
+export default SessionPage;
