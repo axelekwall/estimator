@@ -6,7 +6,6 @@ const LayoutWrapper = styled("div", {
   flexDirection: "column",
   alignItems: "center",
   width: "100vw",
-  minHeight: "100vh",
 });
 
 const Layout = () => {

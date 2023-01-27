@@ -1,4 +1,6 @@
-import { globalStyles, styled } from "../stitches";
+import Button from "../Components/Button";
+import RequiresAuth from "../Components/RequiresAuth";
+import { styled } from "../stitches";
 
 const StartWrapper = styled("div", {
   paddingTop: "30vh",
@@ -24,28 +26,18 @@ const ButtonWrapper = styled("div", {
   alignItems: "center",
 });
 
-const Button = styled("button", {
-  borderRadius: 4,
-  backgroundColor: "$grass4",
-  padding: "8px 12px",
-  color: "$grass11",
-  borderWidth: 1,
-  borderColor: "$grass4",
-  "&:hover": {
-    borderColor: "$grass11",
-  },
-});
-
 const StartPage = () => {
   return (
-    <StartWrapper>
-      <Title>Estimator</Title>
-      <ButtonWrapper>
-        <Button>New Session</Button>
-        <Text>or</Text>
-        <Button>Join Session</Button>
-      </ButtonWrapper>
-    </StartWrapper>
+    <RequiresAuth>
+      <StartWrapper>
+        <Title>Estimator</Title>
+        <ButtonWrapper>
+          <Button>New Session</Button>
+          <Text>or</Text>
+          <Button>Join Session</Button>
+        </ButtonWrapper>
+      </StartWrapper>
+    </RequiresAuth>
   );
 };
 
