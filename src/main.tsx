@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 
 import Start from "./routes/Start";
-import "./index.css";
 import ErrorPage from "./routes/Error";
 import Session from "./routes/Session";
 
