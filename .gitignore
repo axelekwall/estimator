@@ -24,8 +24,6 @@ dist-ssr
 *.sw?
 
 ### Firebase ###
-.idea
-**/node_modules/*
 **/.firebaserc
 
 ### Firebase Patch ###

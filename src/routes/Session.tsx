@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import RequiresAuth from "../Components/RequiresAuth";
-import { useAuth } from "../hooks/auth";
 import { getSession } from "../services/firestore";
 
 const SessionPage = () => {
-  const { user } = useAuth();
   const { sessionId } = useParams();
   useEffect(() => {
     if (sessionId) {

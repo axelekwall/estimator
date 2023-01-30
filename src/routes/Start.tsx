@@ -1,7 +1,8 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthStateContext } from "../auth";
 import Button from "../Components/Button";
 import RequiresAuth from "../Components/RequiresAuth";
-import { useAuth } from "../hooks/auth";
 import { createNewSession } from "../services/firestore";
 import { styled } from "../stitches";
 
@@ -30,7 +31,7 @@ const ButtonWrapper = styled("div", {
 });
 
 const StartPage = () => {
-  const { user } = useAuth();
+  const { user } = useContext(AuthStateContext);
   const navigate = useNavigate();
   const newSession = async () => {
     if (!user) {
