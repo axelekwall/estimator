@@ -1,14 +1,21 @@
 import {
   addDoc,
   collection,
-  doc,
-  getDoc,
+  FirestoreDataConverter,
   serverTimestamp,
+  Timestamp,
 } from "firebase/firestore";
 import { db } from "./firebase";
 
+interface Session {
+  owner?: string;
+  created?: Timestamp;
+}
+
 const createNewSession = async (userId: string) => {
-  const sessionCollection = collection(db, "session");
+  const sessionCollection = collection(db, "session").withConverter(
+    sessionConverter
+  );
   const docRef = await addDoc(sessionCollection, {
     owner: userId,
     created: serverTimestamp(),
@@ -16,16 +23,13 @@ const createNewSession = async (userId: string) => {
   return docRef.id;
 };
 
-const getSession = async (sessionId: string) => {
-  const docRef = doc(db, "session", sessionId);
-  const docSnap = await getDoc(docRef);
-  if (docSnap.exists()) {
-    const docData = docSnap.data();
-    console.log(docData);
-    return docData;
-  } else {
-    console.log("Session does not exist");
-  }
+const sessionConverter: FirestoreDataConverter<Session> = {
+  toFirestore: (session) => session,
+  fromFirestore: (snap) => {
+    const data = snap.data();
+    return { owner: data.owner, created: data.created };
+  },
 };
 
-export { createNewSession, getSession };
+export { createNewSession, sessionConverter };
+export type { Session };

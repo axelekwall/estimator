@@ -1,25 +1,15 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import RequiresAuth from "../Components/RequiresAuth";
-import { getSession } from "../services/firestore";
+import useSession from "../hooks/useSession";
 
 const SessionPage = () => {
-  const { sessionId } = useParams();
-  useEffect(() => {
-    if (sessionId) {
-      // TODO: Subscribe here
-      getSession(sessionId)
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [sessionId]);
+  const session = useSession();
+
   return (
     <RequiresAuth>
-      <h1>Session</h1>
+      <div>
+        <h1>Session</h1>
+        <div>{JSON.stringify(session)}</div>
+      </div>
     </RequiresAuth>
   );
 };

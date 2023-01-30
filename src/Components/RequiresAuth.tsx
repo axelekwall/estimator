@@ -1,9 +1,9 @@
-import { FC, ReactElement, useContext, useEffect } from "react";
+import { FC, ReactElement, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthStateContext } from "../auth";
+import useAuth from "../hooks/useAuth";
 
 const RequiresAuth: FC<{ children: ReactElement }> = ({ children }) => {
-  const { user, initialized } = useContext(AuthStateContext);
+  const { user, initialized } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (!user && initialized) {
