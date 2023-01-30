@@ -11,6 +11,7 @@ import { auth } from "../services/firebase";
 
 const GitHubProvider = new GithubAuthProvider();
 
+// TODO: create auth provider to not have multiple listeners.
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [initialized, setInitialized] = useState<boolean>(false);

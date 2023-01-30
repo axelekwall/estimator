@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  redirect,
   Route,
 } from "react-router-dom";
 import ErrorPage from "./routes/Error";
@@ -13,7 +14,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
       <Route path="" element={<StartPage />} />
-      <Route path="/session" element={<SessionPage />}></Route>
+      <Route path="/session" loader={() => redirect("/")}></Route>
+      <Route path="/session/:sessionId" element={<SessionPage />}></Route>
       <Route path="/login" element={<LoginPage />} />
     </Route>
   )

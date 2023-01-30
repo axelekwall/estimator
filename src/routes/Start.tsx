@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../Components/Button";
 import RequiresAuth from "../Components/RequiresAuth";
+import { useAuth } from "../hooks/auth";
+import { createNewSession } from "../services/firestore";
 import { styled } from "../stitches";
 
 const StartWrapper = styled("div", {
@@ -27,12 +30,22 @@ const ButtonWrapper = styled("div", {
 });
 
 const StartPage = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const newSession = async () => {
+    if (!user) {
+      console.log("No user");
+      return;
+    }
+    const sessionId = await createNewSession(user.uid);
+    navigate("/session/" + sessionId);
+  };
   return (
     <RequiresAuth>
       <StartWrapper>
         <Title>Estimator</Title>
         <ButtonWrapper>
-          <Button>New Session</Button>
+          <Button onClick={newSession}>New Session</Button>
           <Text>or</Text>
           <Button>Join Session</Button>
         </ButtonWrapper>
