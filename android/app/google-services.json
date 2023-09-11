@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "823219099774",
+    "project_id": "estimator-444e0",
+    "storage_bucket": "estimator-444e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823219099774:android:5ea85298ebb6949c4fa02f",
+        "android_client_info": {
+          "package_name": "se.axelekwall.estimator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823219099774-qaes0im189v24m2p384tpk9hkr5gkg5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUftiMZvrNpfI5usMbxQcjXDNcuEMZIko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823219099774-qaes0im189v24m2p384tpk9hkr5gkg5v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
